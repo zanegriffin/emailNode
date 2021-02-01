@@ -1,9 +1,10 @@
+require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan')
 const cors = require('cors');
 const sendToMeRouter = require('./sendToMe.js')
 const app = express()
-const port = 3002
+const port = process.env.PORT
 const bodyParser = require('body-parser');
 
 
