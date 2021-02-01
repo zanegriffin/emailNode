@@ -3,13 +3,11 @@ const router = express.Router()
 const nodemailer = require('nodemailer')
 //condig for a site to send email
 const transport = {
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+    service: 'gmail',
     auth: {
         user: process.env.USER,
         pass: process.env.PASS
-    }
+    },
 }
 //transport function
 const transporter = nodemailer.createTransport(transport)
@@ -26,8 +24,8 @@ router.post('/', (req, res) => {
     // console.log(req.body)
     // res.json({status: 200})
     const mail = {
-        from: process.env.USER,
-        to: 'zanegriffinstudios@gmail.com',
+        from: req.body.email,
+        to: process.env.USER,
         subject: req.body.subject,
         text: `
         from: 
@@ -44,7 +42,8 @@ router.post('/', (req, res) => {
     transporter.sendMail(mail, (err,data) => {
         if(err) {
           res.json({
-            status: 'fail'
+            status: 'fail',
+            err: err
           })
         } else {
           res.json({
