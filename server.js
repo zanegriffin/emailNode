@@ -5,8 +5,7 @@ const sendToMeRouter = require('./sendToMe.js')
 const app = express()
 const port = 3002
 const bodyParser = require('body-parser');
-const { google } = require("googleapis");
-const OAuth2 = google.auth.OAuth2;
+
 
 app.use(cors())
 app.use(express.json())
