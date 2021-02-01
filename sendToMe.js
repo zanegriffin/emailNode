@@ -4,10 +4,10 @@ const nodemailer = require('nodemailer')
 //condig for a site to send email
 const transport = {
     service: 'gmail',
-    auth: {
-        user: process.env.USER,
-        pass: process.env.PASS
-    },
+    // auth: {
+    //     user: process.env.USER,
+    //     pass: process.env.PASS
+    // },
 }
 //transport function
 const transporter = nodemailer.createTransport(transport)
